@@ -1,0 +1,2 @@
+0 --> waving
+1 --> standing
