@@ -147,6 +147,8 @@ def run(
 
             # add FPS on top of video
             cv2.putText(im0, f'FPS: {int(fps)}', (11, 100), 0, 1, [255, 0, 0], thickness=2, lineType=cv2.LINE_AA)
+
+            # Вот он наш prediction
             cv2.putText(im0, prediction, (11, 200), 0, 1, [255, 0, 0], thickness=2, lineType=cv2.LINE_AA)
 
             cv2.imshow('image', im0)

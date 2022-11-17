@@ -1,42 +1,23 @@
 # yolov7-pose-estimation
 
-### New Features
-- Added Support for Comparision of (FPS & Time) Graph
-- How to run Code in Google Colab
-- Code can run on Both (CPU & GPU)
-- Video/WebCam/External Camera/IP Stream Supported
-### Coming Soon
-- Development of streamlit dashboard for Pose-Estimation
-
-### Steps to run Code
-- If you are using google colab then you will first need to mount the drive with mentioned command first, <b>(Windows or Linux users)</b> both can skip this step.
-```
-from google.colab import drive
-drive.mount("/content/drive")
-```
+### Features
+- YOLOv7 Pose with Decision Tree Classifier
+### Running
 - Clone the repository.
 ```
-git clone https://github.com/RizwanMunawar/yolov7-pose-estimation.git
+git clone https://github.com/fengshuibuddy/yolov7-pose-with-classifier
 ```
 
 - Goto the cloned folder.
 ```
-cd yolov7-pose-estimation
+cd yolov7-pose-with-classifier
 ```
 
 - Create a virtual envirnoment (Recommended, If you dont want to disturb python packages)
 ```
-### For Linux Users
-python3 -m venv psestenv
-source psestenv/bin/activate
-
-### For Window Users
-python3 -m venv psestenv
-cd psestenv
-cd Scripts
-activate
-cd ..
-cd ..
+### For Linux Users, I am using Anaconda
+conda create --name yolov7-pose python=3.8
+conda activate yolov7-pose
 ```
 
 - Upgrade pip with mentioned command below.
@@ -48,6 +29,14 @@ pip install --upgrade pip
 
 ```
 pip install -r requirements.txt
+pip install xtcocotools
+```
+
+- If you're utilizing GPU, you need to install pytorch cuda version. I am using the version CUDA >= 11.3
+- Check the CUDA version.
+``` 
+pip uninstall torch torchvision torchaudio
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
 ```
 
 - Download yolov7 pose estimation weights from [link](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6-pose.pt) and move them to the working directory {yolov7-pose-estimation}
@@ -55,28 +44,28 @@ pip install -r requirements.txt
 
 - Run the code with mentioned command below.
 ```
-python pose-estimate.py
+python pose_estimate_with_classifier.py
 
 #if you want to change source file
-python pose-estimate.py --source "your custom video.mp4"
+python pose_estimate_with_classifier.py --source "your custom video.mp4"
 
 #For CPU
-python pose-estimate.py --source "your custom video.mp4" --device cpu
+python pose_estimate_with_classifier.py --source "your custom video.mp4" --device cpu
 
 #For GPU
-python pose-estimate.py --source "your custom video.mp4" --device 0
+python pose_estimate_with_classifier.py --source "your custom video.mp4" --device 0
 
 #For LiveStream (Ip Stream URL Format i.e "rtsp://username:pass@ipaddress:portno/video/video.amp")
-python pose-estimate.py --source "your IP Camera Stream URL" --device 0
+python pose_estimate_with_classifier.py --source "your IP Camera Stream URL" --device 0
 
 #For WebCam
-python pose-estimate.py --source 0
+python pose_estimate_with_classifier.py --source 0
 
 #For External Camera
-python pose-estimate.py --source 1
+python pose_estimate_with_classifier.py --source 1
 ```
 
-- Output file will be created in the working directory with name <b>["your-file-name-without-extension"+"_keypoint.mp4"]</b>
+- Output file will be created in the working directory with name <b>["./output_videos/your-file-name-without-extension"+"_keypoint.mp4"]</b>
 
 #### RESULTS
 
@@ -102,7 +91,7 @@ python pose-estimate.py --source 1
 - https://learnopencv.com/yolov7-object-detection-paper-explanation-and-inference/
 - https://github.com/ultralytics/yolov5
 
-#### My Medium Articles
+#### RizwanMunawar's Medium Articles
 - https://medium.com/augmented-startups/yolov7-training-on-custom-data-b86d23e6623
 - https://medium.com/augmented-startups/roadmap-for-computer-vision-engineer-45167b94518c
 - https://medium.com/augmented-startups/yolor-or-yolov5-which-one-is-better-2f844d35e1a1
