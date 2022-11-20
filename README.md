@@ -1,4 +1,4 @@
-# yolov7-pose-estimation
+# yolov7-pose-estimation-with-classifier
 
 ### Features
 - YOLOv7 Pose with Decision Tree Classifier
