@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture("rtsp://admin:New@ction2299@10.10.25.31/LiveMedia/ch1/Media1")
+cap = cv2.VideoCapture("rtsp://")
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 
