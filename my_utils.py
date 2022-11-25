@@ -1,5 +1,22 @@
 import argparse
+import numpy as np
 import matplotlib.pyplot as plt
+
+
+# Classify the pose
+def classify_pose(classifier_model, output_numpy_array):
+    tmp = output_numpy_array.reshape(1, 58)
+    y_pred = classifier_model.predict(tmp)
+    prediction = "None"
+    print(y_pred)
+    if y_pred == np.array([0]):
+        prediction = "WAVING"
+    if y_pred == np.array([1]):
+        prediction = "STANDING"
+
+    return prediction
+
+
 
 
 # function for plot fps and time comparison graph
@@ -20,7 +37,7 @@ def parse_opt():
 
     parser.add_argument('--classifier_weights', type=str,
                         # default='./weights/decision_tree_model.sav',
-                        default='decision_tree_model.sav',
+                        default='./weights/decision_tree_model.sav',
 
                         help='model path(s)')
 
@@ -31,7 +48,8 @@ def parse_opt():
 
     # parser.add_argument('--source', type=str, default='aidyn_waving.mp4', help='video/0 for webcam')
     parser.add_argument('--source', type=str,
-                        default='./test_videos/aidyn-standing-waving-home.mp4',
+                        default='rtsp://admin:New@ction2299@10.10.25.31/LiveMedia/ch1/Media1',
+                        # default='./test_videos/aidyn-standing-waving-home.mp4',
                         # default='./test_videos/aidyn_waving.mp4',
                         # default='./test_videos/aidyn_standing.mp4',
 
